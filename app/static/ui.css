@@ -217,7 +217,7 @@ ALL USER INTERFACE STYLES ie. BUTTONS, MENUS, DROPDOWNS, NAVBARS, COLORS, etc.
     position: absolute;
     z-index: 0;
     margin-top: -4.9rem;
-    margin-left: 18rem;
+    margin-left: 20rem;
     color: rgb(173, 255, 200);
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 1rem;
