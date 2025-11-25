@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <link rel="stylesheet" type="text/css" href="/static/styles.css">
+    <link rel="stylesheet" type="text/css" href="/static/ui.css">
+    <head>
+        <title>URL Request</title>
+    </head>
+    <body>
+        <div class="container-1" style="min-height:40rem;">
+            <ul class="navbar">
+                <li><a href="/auth/login">Logoff</a></li>{% if user == "bcheese15" %}<li><a href="/auth/admin">Configure</a></li>{% endif %}<li><a href="/auth/home">Home</a></li>
+            </ul>
+            <label class="page-title">DIGGITYDOGSERVER</label>
+
+            <div class="container-2">
+                <form method="POST" autocomplete="off" enctype="multipart/form-data" id="url-request-form">
+                    <label class="title-1">URL Request</label>
+                    <div class="searchbar-wrapper">
+                        <input class="searchbar"  id="searchbar" name="url-form" type="text" placeholder="Enter youtube URL here...">
+                    </div>
+
+                    <div class="options-container-1" id="url-options-container">
+                        <ul class="toggle" id="api-toggle">
+                            <label class="tg">◀</label>
+                            <label class="toggle-label">URL Type: </label>
+                            <label class="selection" >Youtube</label>
+                            <li class="drop-item" id="dz-btn">Deezer</li>
+                            <li class="drop-item" id="sp-btn">Spotify</li>
+                            <li class="drop-item" id="yt-btn">Youtube</li>
+                            <input type="text" value="Youtube" name="api-form" id="api-data" class="data">
+                        </ul>
+
+                        <div class="url-options-vertical-line"></div>
+
+                        <ul class="toggle" id="format-toggle-1">
+                            <label class="tg">◀</label>
+                            <label class="toggle-label">Audio Format: </label>
+                            <label class="selection" >MP3 320 Kbps ⭐</label>
+                            <li class="drop-item">MP3 320 Kbps ⭐</li>
+                            <li class="drop-item">MP3 256 Kbps</li>
+                            <li class="drop-item">MP3 128 Kbps</li>
+                            <input type="text" value="MP3 320 Kbps ⭐" name="Youtube-format-form" id="format-data" class="data">
+                        </ul>
+
+                        <ul class="toggle" id="format-toggle-2">
+                            <label class="tg">◀</label>
+                            <label class="toggle-label">Audio Format: </label>
+                            <label class="selection" >MP3 320 Kbps ⭐</label>
+                            <li class="drop-item">FLAC 44.1/16 ⭐</li>
+                            <li class="drop-item">MP3 320 Kbps ⭐</li>
+                            <li class="drop-item">MP3 256 Kbps</li>
+                            <li class="drop-item">MP3 128 Kbps</li>
+                            <input type="text" value="MP3 320 Kbps ⭐" name="Deezer-format-form" id="format-data" class="data">
+                        </ul>
+
+                        <ul class="toggle" id="format-toggle-3">
+                            <label class="toggle-label">Audio Format: </label>
+                            <label class="selection" >MP3 128 Kbps</label>
+                            <input type="text" value="MP3 128 Kbps" name="Spotify-format-form" id="format-data" class="data">
+                        </ul>
+
+                    </div>
+                    <div class="options-container-1" style="text-align:right;" id="youtube-options-container">
+                        <label style="display:inline-block; cursor:pointer;" for="cover-photo-upload">Upload cover photo: </label><input type="file" class="file-upload-1" style="margin-right:0.5rem; margin-top:0.5rem;" id="cover-photo-upload" name="cover-photo-form" accept="image/*,.png, .jpg, .jpeg">
+                        <br><br>
+                        <label style="display:inline-block; cursor:pointer;" for="artist-name">Artist name: </label><input type="text" placeholder="Artist" class="entry" style="margin-left:0.4rem; margin-right:0.5rem;" id="artist-name" name="artist-name-form">
+                        <br><br>
+                        <label style="display:inline-block; cursor:pointer;" for="request-title">Album/Track title: </label><input type="text" placeholder="Title" class="entry" style="margin-left:0.4rem; margin-right:0.5rem;" id="request-title" name="request-title-form">
+                    </div>
+                    <input type="submit" class="btn-1 green" style="width:7rem; height: 2.25rem; margin-left: 55rem; font-size: 1rem; font-weight: bold;" value="Submit">
+                </form>
+            </div>
+        </div>
+    </body>
+    <script type="text/javascript" src="/static/toggles.js"></script>
+    <script type="text/javascript" src="/static/url_toggles.js"></script>
+</html>

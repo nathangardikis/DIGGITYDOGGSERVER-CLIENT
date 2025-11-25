@@ -1,0 +1,8 @@
+
+.toggle {
+    margin-left: 8.5rem;
+    margin-top: 1rem;
+    &:last-of-type {
+        margin-left: 28.5rem;
+    }
+}

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Settings --Admin</title>
+        <link rel="stylesheet" type="text/css" href="/static/styles.css">
+        <link rel="stylesheet" type="text/css" href="/static/ui.css">
+    </head>
+    <body>
+        <div class="container-1">
+            <ul class="navbar">
+                <li><a href="/auth/login">Logout</a></li><li><a href="/auth/home">Home</a></li>
+            </ul>
+            <label class="page-title">DIGGITYDOGSERVER</label>
+
+            <label class="title-1">Administrator Settings</label>
+            <div class="admin-settings-wrapper">
+                <div class="tab-wrapper">
+                    <input type="button" class="tab" value="General">
+                    <input type="button" class="tab" value="Users">
+                    <input type="button" class="tab" value="Blacklist">
+                    <input type="button" class="tab" value="Whitelist">
+                    <input type="button" class="tab" value="Emails">
+                </div>
+                <form autocomplete="off" method="POST" id="settings-form">
+                    <div class="request-container" id="General" style="visibility: hidden; text-align: right;">
+                        <hr class="hr-big">
+                        <label class="request-title" style="text-align:center;">General</label>
+                        {% with setting = permissions["general"] %}
+                            <br><br>
+                            {% if setting["allow_requests"] == True %}
+                                <label style="display:inline-block;">Allow users to submit requests.</label>
+                                <input style="display:inline-block;" type="button" class="switch admin-general-switch" value="⬤" name="allow_requests" id="allow-requests-switch">
+                                <br><br>
+                            {% elif setting["allow_requests"] == False %}
+                                <label style="display:inline-block;">Allow users to submit requests.</label>
+                                <input style="display:inline-block; text-indent:0rem; background-color:rgb(21, 24, 21);" type="button" class="switch admin-general-switch" value="⬤" name="allow_requests" id="allow-requests-switch">
+                                <br><br>
+                            {% endif %}                                
+                            {% if setting["allow_bitrate"] == True %}
+                                <label style="display:inline-block;">Allow users to change bitrate.</label>
+                                <input style="display:inline-block;" type="button" class="switch admin-general-switch" value="⬤" name="allow_bitrate" id="allow-bitrate-switch">
+                                <br><br>
+                            {% elif setting["allow_bitrate"] == False %}
+                                <label style="display:inline-block;">Allow users to change bitrate.</label>
+                                <input style="display:inline-block; text-indent:0rem; background-color:rgb(21, 24, 21);" type="button" class="switch admin-general-switch" value="⬤" name="allow_bitrate" id="allow-bitrate-switch">
+                                <br><br>
+                            {% endif %}
+                            {% if setting["allow_new_accounts"] == True %}
+                                <label style="display:inline-block;">Allow users to create accounts.</label>
+                                <input style="display:inline-block;" type="button" class="switch admin-general-switch" value="⬤" name="allow_new_accounts" id="allow-account-switch">
+                                <br><br>
+                            {% elif setting["allow_new_accounts"] == False %}
+                                <label style="display:inline-block;">Allow users to create accounts.</label>
+                                <input style="display:inline-block; text-indent:0rem; background-color:rgb(21, 24, 21);" type="button" class="switch admin-general-switch" value="⬤" name="allow_new_accounts" id="allow-account-switch">                                    <br><br>
+                            {% endif %}
+                            {% if setting["enable_blacklist"] == True %}
+                                <label style="display:inline-block;">Enable blacklist.</label>
+                                <input style="display:inline-block;" type="button" class="switch admin-general-switch" value="⬤" name="enable_blacklist" id="enable-blacklist-switch">
+                                <br><br>
+                            {% elif setting["enable_blacklist"] == False %}
+                                <label style="display:inline-block;">Enable blacklist.</label>
+                                <input style="display:inline-block; text-indent:0rem; background-color:rgb(21, 24, 21);" type="button" class="switch admin-general-switch" value="⬤" name="enable_blacklist" id="enable-blacklist-switch">
+                                <br><br>
+                            {% endif %}
+                            {% if setting["enable_whitelist"] == True %}
+                                <label style="display:inline-block;">Enable whitelist.</label>
+                                <input style="display:inline-block;" type="button" class="switch admin-general-switch" value="⬤" name="enable_whitelist" id="enable-whitelist-switch">
+                                <br><br>
+                            {% elif setting["enable_whitelist"] == False %}
+                                <label style="display:inline-block;">Enable whitelist.</label>
+                                <input style="display:inline-block; text-indent:0rem; background-color:rgb(21, 24, 21);" type="button" class="switch admin-general-switch" value="⬤" name="enable_whitelist" id="enable-whitelist-switch">
+                                <br><br>
+                            {% endif %}
+                            {% if setting["show_requests"] == True %}
+                                <label style="display:inline-block;">Show requests on homepage.</label>
+                                <input style="display:inline-block;" type="button" class="switch admin-general-switch" value="⬤" name="show_requests" id="show-requests-switch">
+                            {% elif setting["show_requests"] == False %}
+                                <label style="display:inline-block;">Show requests on homepage.</label>
+                                <input style="display:inline-block; text-indent:0rem; background-color:rgb(21, 24, 21);" type="button" class="switch admin-general-switch" value="⬤" name="show_requests" id="show-requests-switch">
+                            {% endif %}
+                        {% endwith %}
+                    </div>
+                    <div class="request-container" id="Users" style="visibility: hidden;">
+                        <hr class="hr-big">
+                        <label class="request-title">Users</label>
+                        <div class="requests">
+                            {% for p_user in permissions["users"] %}
+                                <div class="request-card user-card" style="display: inline-block;">
+                                    <br><label>User: {{ p_user["username"] }}</label>
+                                    {% if p_user["admin"] == True %}
+                                        <label style="display: inline-block;">Make user admin:</label>
+                                        <input style="display:inline-block;" type="button" class="switch admin-general-switch" value="⬤" name="{{p_user['username']}}_admin_switch" id="{{p_user['username']}}-admin-switch">
+                                    {% elif p_user["admin"] == False %}
+                                        <label style="display: inline-block;">Make user admin:</label>
+                                        <input style="display:inline-block; text-indent:0rem; background-color:rgb(21, 24, 21);" type="button" class="switch admin-general-switch" value="⬤" name="{{p_user['username']}}_admin_switch" id="{{p_user['username']}}-admin-switch">     
+                                    {% endif %}
+                                    {% if p_user["allow_settings"] == True %}
+                                        <label style="display:inline-block;">Allow settings for user:</label>
+                                        <input style="display:inline-block;" type="button" class="switch admin-general-switch" value="⬤" name="{{p_user['username']}}_allow_settings_switch" id="{{p_user['username']}}-allow-settings-switch">
+                                    {% elif p_user["allow_settings"] == False %}
+                                        <label style="display:inline-block;">Allow settings for user:</label>
+                                        <input style="display:inline-block; text-indent:0rem; background-color:rgb(21, 24, 21);" type="button" class="switch admin-general-switch" value="⬤" name="{{p_user['username']}}_allow_settings_switch" id="{{p_user['username']}}-allow-settings-switch">  
+                                    {% endif %}
+
+                                    <label id="{{p_user['username']}}_email">Email: {{ p_user["email"] }}</label>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="request-container" id="Blacklist" style="visibility: hidden;">
+                        <hr class="hr-big">
+                        <label class="request-title">Blacklist</label>
+                        <div class="requests">
+                            {% for bl_user in permissions["blacklist"] %}
+                                <div class="request-card blacklist-item">
+                                    <label class="blacklist-user">{{ bl_user["username"] }}</label>
+                                    <label>Reason: {{ bl_user["reason"] }}</label>
+                                </div>
+                                <input type="button" value="✕" class="close-btn remove-btn" id="remove-button-{{ bl_user['username'] }}">
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="request-container" id="Emails" style="visibility: hidden;">
+                        <hr class="hr-big">
+                        <label class="request-title">Emails</label>
+                        <div class="requests">
+                            {% for email in permissions["emails"] %}
+                                <div class="request-card email-container">
+                                    <label class="email">{{ email["email"] }}</label>
+                                    {% if email["registered"] == True %}
+                                        <label class="email-status">Account created.</label>
+                                    {% elif email["registered"] == False %}
+                                        <label class="email-status">Account creation pending...</label>
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+    <script type="text/javascript" src="/static/jquery-3.7.1.min.js"></script>
+    <script type="text/javascript" src="/static/admin_tabs.js"></script>
+</html>

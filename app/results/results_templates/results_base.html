@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" type="text/css" href="/static/ui.css">
+        <link rel="stylesheet" type="text/css" href="/static/deezer_results.css">
+        <link rel="stylesheet" type="text/css" href="/static/styles.css">
+        <title>{{ query }}</title>
+    </head>
+    <body>
+        <div class="container-1">
+            <ul class="navbar" style="margin-top: -3rem;">
+                <li><a href="/auth/home">Home</a></li><li><a href="/login">Logout</a></li>
+            </ul>
+            <label class="results-banner">Results for "{{ query }}"</label>
+
+            <form method="POST" autocomplete="off">
+                <div class="searchbar-wrapper">
+                    <input class="searchbar" id="searchbar" name="query-form" type="text" placeholder="Search artist...">
+                    <input type="submit" value="⚲" class="search-btn">
+                </div>
+            </form>
+            {% block results %}{% endblock %}
+        </div>
+    </body>
+    <script src="/static/toggles.js"></script>
+</html>

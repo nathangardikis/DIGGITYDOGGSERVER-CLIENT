@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <link rel="stylesheet" type="text/css" href="/static/styles.css">
+    <link rel="stylesheet" type="text/css" href="/static/ui.css">
+    <head>
+        <title>Register</title>
+    </head>
+    <body>
+        <div class="login-body">
+
+            <h1 class="title-1">DIGGITYDOGGSERVER</h1><br>
+
+            <div class="login-card" id="email-card-1">
+                <h2>Enter valid email</h2>
+                <hr>
+                <br>
+                <input type="text" placeholder="Enter email here..." id="email-entry"><br>
+                <input type="button" value="Next" class="btn-2 dark" id="verify-button">
+            </div>
+
+            <form method="POST" autocomplete="off">
+                <input name="newemail" type="text" class="data" id="email-data" style="visibility: hidden;">
+                <div class="login-card" id="email-card-2" style="display: none;">
+                    <h2>Error: Invalid Email</h2>
+                    <hr>
+                    <label style="color: rgb(175, 247, 193);">The email entered was not found....</label>
+                    <input type="button" value="Try Again" class="btn-2 dark" id="retry-btn">
+                </div>
+
+                <div class="login-card" id="register-card" style="display:none;">
+                    <h2>Create Account</h2>
+                    <hr>
+                    <br>
+                    <input name="newusername" type="text" class="entry" placeholder="Username">
+                    <br><br><br>
+                    <input name="newpassword" type="password" class="entry" placeholder="Password" id="new-password">
+                    <input type="password" class="entry" placeholder="Confirm password" id="confirm-password">
+                    <br>
+                    <input class="btn-2 green" type="submit" value="Register">
+                </div>
+            </form>
+        </div>
+    </body>
+    <script type="text/javascript" src="/static/jquery-3.7.1.min.js"></script>
+    <script type="text/javascript" src="/static/register.js"></script>
+</html>

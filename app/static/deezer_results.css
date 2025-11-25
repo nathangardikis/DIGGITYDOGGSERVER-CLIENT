@@ -1,0 +1,78 @@
+.results-banner {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 3rem;
+    display: block;
+    margin: auto;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+.name {
+    display: block;
+    color: rgb(173, 217, 255);
+    font-size: 1.7rem;
+    margin-top: -4rem;
+    margin-left: 6.5rem;
+}
+
+.name-sm {
+    display: block;
+    color: rgb(173, 217, 255);
+    font-size: 1rem;
+    margin-top: -5rem;
+    margin-left: 6.5rem;
+}
+
+.request-data {
+    visibility: hidden;
+}
+
+.deezer-link {
+    color: rgb(19, 65, 80);
+    margin-left: 6.5rem;
+}
+
+.result {
+    margin: auto;
+    margin-bottom: 1rem;
+    padding: 0;
+    background-color: rgb(11, 12, 11);
+    font-family: Arial, Helvetica, sans-serif;
+    width: 50rem;
+    border-radius: 0.5rem;
+    overflow: auto;
+    white-space: nowrap;
+    overflow-y: hidden;
+    
+}
+
+.r-artist {
+    min-height: 6rem;
+    max-height: 6rem;
+    .btn-1 {
+        margin-top: -6.2rem;
+    }
+    img {
+        border-radius: 0.5rem;
+        width: 6rem;
+        height: 6rem;
+    }
+}
+
+.r-album {
+    min-height: 6rem;
+    max-height: 6rem;
+    img {
+        border-radius: 0.5rem;
+        width: 6rem;
+        height: 7rem;
+    }
+    .toggle {
+        margin-top: -1.85rem;
+    }
+}
+
+.toggle {
+    margin-top: -4.85rem;
+    margin-left: 37.5rem;
+}

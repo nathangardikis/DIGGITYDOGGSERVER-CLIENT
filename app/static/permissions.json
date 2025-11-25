@@ -1,0 +1,69 @@
+{
+    "users": [
+        {
+            "admin": false,
+            "allow_settings": true,
+            "email": "pee@balls.com",
+            "username": "pleeb"
+        },
+        {
+            "admin": true,
+            "allow_settings": true,
+            "email": "bcheelabs@proton.me",
+            "username": "bcheese15"
+        },
+        {
+            "admin": false,
+            "allow_settings": false,
+            "email": null,
+            "username": "diggitydog-bot"
+        },
+        {
+            "admin": false,
+            "allow_settings": true,
+            "email": "anotheremail@quack.com",
+            "username": "anotheruser123"
+        }
+    ],
+    "blacklist": [
+        {
+            "username": "pleeb",
+            "reason": "Example reason"
+        },
+        {
+            "username": "anotherexample69",
+            "reason": "traitor"
+        }
+    ],
+    "whitelist": [
+        "bcheese15",
+        "diggitydog-bot",
+        "anotheruser123"
+    ],
+    "emails": [
+        {
+            "email": "pee@balls.com",
+            "registered": true
+        },
+        {
+            "email": "poop@balls.com",
+            "registered": true
+        },
+        {
+            "email": "bcheelabs@proton.me",
+            "registered": true
+        },
+        {
+            "email": "anotheremail@quack.com",
+            "registered": true
+        }
+    ],
+    "general": {
+        "allow_requests": true,
+        "allow_bitrate": true,
+        "allow_new_accounts": true,
+        "enable_blacklist": true,
+        "enable_whitelist": false,
+        "show_requests": true
+    }
+}

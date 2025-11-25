@@ -1,0 +1,27 @@
+{% extends 'results_base.html' %}
+
+{% block results %}
+    {% for artist in artists %}
+        <div class="result r-artist">
+            <img src="{{artist['img']}}">
+            <label class="name">{{ artist["name"] }}</label>
+            <a class="deezer-link" href="{{ artist['url'] }}">{{ artist["url"] }}</a>
+            {% with name = artist["name"] %}
+                <form method="POST">
+                    <ul class="toggle">
+                        <label class="tg">◀</label>
+                        <label class="selection">MP3_320</label>
+                        <li class="drop-item">FLAC</li>
+                        <li class="drop-item">MP3_320</li>
+                        <li class="drop-item">MP3_254</li>
+                        <li class="drop-item">MP3_128</li>
+                        <input type="text" class="data" name="bitrate">
+                    </ul>
+                    <input class="request-data" type="text" name="artist_name" value="{{artist['name']}}">
+                    <input class="request-data" type="text" name="img_source" value="{{artist['img']}}">
+                    <input type="submit" value="Add" class="btn-1 green">
+                </form>
+            {% endwith %}
+        </div>
+    {% endfor %}
+{% endblock %}

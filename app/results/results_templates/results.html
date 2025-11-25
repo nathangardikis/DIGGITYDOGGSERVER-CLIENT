@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+    <link rel="stylesheet" type="text/css" href="/static/styles.css">
+    <head>
+        <title>{{ discography["name"] }}</title>
+    </head>
+    <body>
+        <div class="results-body">
+            <ul class="navbar">
+                <li><label>Home</label></li><li><label>Logout</label></li>
+            </ul>
+            <div class="artist"><img src="{{ discography['artist_img'] }}"><label>{{ discography["name"] }}</label>{% with artist_name = discography['name'] %}<button id="{{artist_name}}" onclick="submitArtistRequest('{{artist_name}}')" style="width: 8rem; margin-top: -2.49rem; margin-left: 85rem;" class="btn">Add Artist</button>{% endwith %}</div>
+            <div class="artist-body">
+                <div class="discography">
+                    {% for album in discography["albums"] %}
+                        {% with name = album['title'] %}
+                            <div class="album">
+                                <div class="album-title" ><img src="{{ album['cover'] }}"><label>{{ album["title"] }}</label><button id="{{name}}" onclick="submitAlbumRequest('{{name}}')" style="float: right; margin-top: -3rem; width: 9rem; margin-right: 0.5rem;" class="btn"><img id="{{name}}{{name}}" class="loader-1" data-src="/static/89.gif">Add Album</button></div>
+                                <div class="tracks">
+                                    {% for track in album["tracks"] %}
+                                        <label class="track">  {{ track["#"] }}.  {{ track["title"] }}</label>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        {% endwith %}
+                    {% endfor %}
+                    {% for ep in discography["eps"] %}
+                        <div class="album">
+                            <div class="album-title"><img src="{{ ep['cover'] }}"><label>{{ ep["title"] }}</label></div>
+                            <div class="tracks">
+                                {% for track in ep["tracks"] %}
+                                    <label class="track">{{ track["#"] }}.  {{ track["title"] }}</label>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="other-body">
+                    <div class="top-tracks">
+                        <label class="top-tracks-title">Top Tracks</label><br>
+                        {% for top_track in discography["top_tracks"] %}
+                            <label class="top-track" ><img src="{{ top_track['cover'] }}"><label>{{ top_track["#"] }}.  {{ top_track["title"] }}</label></label>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script type="text/javascript" src="/static/results.js"></script>
+    <script type="text/javascript" src="/static/jquery-3.7.1.min.js"></script>
+    <script type="text/javascript">
+        const url = "http://127.0.0.1:5000/artist/{{ discography['artist_name'] }}";
+        const artist_data = "{{ discography }}";
+        const artistName = '{{ discography["name"] }}';
+        function submitArtistRequest(aName) {
+            var artistBtn = document.getElementById(aName);
+            var buttons = document.querySelectorAll("button");
+            buttons.forEach((button) => {
+                button.innerHTML = "Adding";
+                button.disabled = true;
+            });
+            artistBtn.innerHTML = "Adding";
+            artistBtn.disabled = true;
+            artistRequest = {
+                "type": "artist",
+                "title": aName,
+                "artist": aName
+            };
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data: JSON.stringify(artistRequest),
+                success: function(response) {
+                    var response_data = JSON.parse(JSON.stringify(response));
+                    artistBtn.innerHTML = "Added"; 
+                    buttons.forEach((button) => {
+                        button.innerHTML = "Added";
+                    });
+                    console.log(response_data['message']);
+                },
+                error: function() {
+                    console.log('Error');
+                }
+            });
+        }
+        function submitAlbumRequest(album_name) {
+            var albumBtn = document.getElementById(album_name);
+            var loader_name = album_name + album_name;
+            var loader = document.getElementById(loader_name);
+            loader.src = loader.getAttribute('data-src');
+            albumBtn.innerHTML = "Adding...";
+            albumBtn.disabled = true;
+            albumRequest = {
+                "type": "album",
+                "title": album_name,
+                "artist": artistName
+            };
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data: JSON.stringify(albumRequest),
+                success: function(response) {
+                    var response_data = JSON.parse(JSON.stringify(response));
+                    loader.src = "";
+                    albumBtn.innerHTML = "Added";
+                    console.log(response_data['message']);
+                },
+                error: function() {
+                    console.log('error');
+                }
+            });
+        }
+        function submitTrackRequest(track_name) {
+            var id = "t" + track_name;
+            var trackBtn = document.getElementById(id);
+            trackBtn.innerHTML = "Adding";
+            trackBtn.disabled = true;
+            trackRequest = {
+                "type": "track",
+                "title": track_name,
+                "artist": artistName
+            };
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data: JSON.stringify(trackRequest),
+                success: function(response) {
+                    var response_data = JSON.parse(JSON.stringify(response));
+                    trackBtn.innerHTML = "Added";
+                    console.log(response_data['message']);
+                },
+                error: function() {
+                    console.log('Error')
+                }
+            });
+        }
+    </script>
+</html>

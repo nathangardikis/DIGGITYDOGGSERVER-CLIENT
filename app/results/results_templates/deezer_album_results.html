@@ -1,0 +1,29 @@
+{% extends 'results_base.html' %}
+
+{% block results %}
+    {% for album in albums %}
+        <div class="result r-album">
+            <img src="{{album['cover']}}">
+            <label class="name">{{ album["title"] }}</label>
+            <label class="name-sm">{{ album["artist"]["name"] }}</label>
+            <a class="deezer-link" href="{{ album['link'] }}">{{ album["link"] }}</a>
+            {% with name = album["title"] %}
+                <form method="POST">
+                    <ul class="toggle">
+                        <label class="tg">◀</label>
+                        <label class="selection">MP3_320</label>
+                        <li class="drop-item">FLAC</li>
+                        <li class="drop-item">MP3_320</li>
+                        <li class="drop-item">MP3_254</li>
+                        <li class="drop-item">MP3_128</li>
+                        <input type="text" value="MP3_320" class="data" name="bitrate">
+                    </ul>
+                    <input class="request-data" type="text" name="album_name" value="{{album['title']}}">
+                    <input class="request-data" type="text" name="artist_name" value="{{album['artist']['name']}}">
+                    <input class="request-data" type="text" name="img_source" value="{{album['cover']}}">
+                    <input type="submit" value="Add" class="btn-1 green">
+                </form>
+            {% endwith %}
+        </div>
+    {% endfor %}
+{% endblock %}
