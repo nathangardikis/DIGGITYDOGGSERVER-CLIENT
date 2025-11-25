@@ -1,9 +1,9 @@
 
-body {
+html, body {
     margin: 0;
     padding: 0;
+    width: 100vw;
     background-color: rgb(12, 11, 11);
-    padding-bottom: 20rem;
     overflow: scroll;
     scrollbar-color: rgba(0, 217, 255, 0) rgba(17, 101, 116, 0);
 

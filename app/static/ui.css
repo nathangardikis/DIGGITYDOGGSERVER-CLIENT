@@ -378,7 +378,7 @@ ALL USER INTERFACE STYLES ie. BUTTONS, MENUS, DROPDOWNS, NAVBARS, COLORS, etc.
 
 .navbar {
     display: block;
-    width: 69.5rem;
+    width: 100%;
     user-select: none;
     list-style-type: none;
     border-top-left-radius: 0.5rem;
@@ -388,14 +388,13 @@ ALL USER INTERFACE STYLES ie. BUTTONS, MENUS, DROPDOWNS, NAVBARS, COLORS, etc.
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     margin-top: -1rem;
     background-color: rgb(5, 5, 5);
-    padding-top: 0.1rem;
-    padding-bottom: 0.1rem;
+    padding: 0;
     min-height: 2.2rem;
     border-bottom: 4px solid rgba(223, 223, 223, 0.13);
     li {
         margin: auto;
-        float: right;
         padding: 0.5rem;
+        display: inline-block;
         a {
             text-decoration: none;
             color: rgb(173, 255, 210);
@@ -419,7 +418,6 @@ ALL USER INTERFACE STYLES ie. BUTTONS, MENUS, DROPDOWNS, NAVBARS, COLORS, etc.
 */
 .container-1 {
     margin: auto;
-    margin-top: 3rem;
     margin-bottom: 2rem;
     border-radius: 0.75rem;
     border-top-left-radius: 0.5rem;
@@ -428,8 +426,7 @@ ALL USER INTERFACE STYLES ie. BUTTONS, MENUS, DROPDOWNS, NAVBARS, COLORS, etc.
     padding-bottom: 1rem;
     padding-top: 1rem;
     color: rgb(173, 217, 255);
-    width: 72rem;
-    border: 2px solid rgba(223, 223, 223, 0.137);
+    width: 100%;
 }
 
 .containter-2 {
@@ -469,10 +466,7 @@ ALL USER INTERFACE STYLES ie. BUTTONS, MENUS, DROPDOWNS, NAVBARS, COLORS, etc.
 
 .searchbar-wrapper {
     display: block;
-    .search-btn{ 
-        margin-top: -2.8rem;
-        margin-left: 45.97rem;
-    }
+    
 }
 
 .request-container {
@@ -482,7 +476,6 @@ ALL USER INTERFACE STYLES ie. BUTTONS, MENUS, DROPDOWNS, NAVBARS, COLORS, etc.
     margin-left: 1.5rem;
     width: 95%;
     text-align: center;
-    padding-right: 2rem;
     .request-title {
         display: block;
         margin: auto;
@@ -824,7 +817,6 @@ ALL USER INTERFACE STYLES ie. BUTTONS, MENUS, DROPDOWNS, NAVBARS, COLORS, etc.
     visibility: hidden;
     position: absolute;
     z-index: 6;
-    margin-left: 49.5rem;
     min-width: 15rem;
     max-width: 15rem;
     min-height: 10rem;
