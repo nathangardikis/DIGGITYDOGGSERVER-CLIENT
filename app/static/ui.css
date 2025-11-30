@@ -577,7 +577,7 @@ ALL USER INTERFACE STYLES ie. BUTTONS, MENUS, DROPDOWNS, NAVBARS, COLORS, etc.
                 position: relative;
                 z-index: 4;
                 display: block;
-                min-width: 30rem;
+                max-width: 90vw;
                 min-height: 5rem;
                 margin-top: 6.55rem;
                 background-color: rgba(59, 66, 59, 0.205);

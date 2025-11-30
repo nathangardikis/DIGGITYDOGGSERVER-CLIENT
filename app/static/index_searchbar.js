@@ -41,3 +41,6 @@ dropItems.forEach((dropItem) => {
         searchbar.placeholder = "Search " + dropItem.innerHTML.toLowerCase() + "...";
     });
 });
+
+const homeBtn = document.getElementById("home");
+homeBtn.disabled = true;

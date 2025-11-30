@@ -8,90 +8,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
-        <div class="container-1">
-            <ul class="navbar">
-                <li><a href="/auth/login">Logoff</a></li>{% if admin_status == True %}<li><a href="/auth/admin">Configure</a></li>{% endif %}<li><a href="/auth/url-request">URL Request</a></li>
-            </ul>
-            <label class="page-title">DIGGITYDOGGSERVER</label><label class="version">v1.0 (PREVIEW)</label>
-
-            <div class="container-2">
-                <form method="POST" autocomplete="off" id="search-form">
-
-                    {% if general_settings["allow_requests"] == True %}
-                        <label class="title-1">New Request</label>
-                        <div class="searchbar-wrapper">
-                            <input class="searchbar"  id="searchbar" name="query-form" type="text" placeholder="Search artist...">
-                            <input type="button" value="⚲" class="search-btn">
-                            <div class="search-error-card" id="sec">
-                                <label>[ ERROR ]: Invalid Search</label>
-                                <p>Nothing entered into searchbar</p>
-                                <input type="button" value="Dismiss" class="btn-2 dark" id="dismiss-button">
-                            </div>
-                        </div>
-                    {% else %}
-                        <label class="title-1">Currently not taking requests...</label>
-                    {% endif %}
-                   
-                    {% if general_settings["allow_requests"] == True %}
-                        {% if general_settings["allow_bitrate"] == True %}
-                            {% if user_settings["allow_settings"] == True %}
-                                <div class="options-container-1">
-                                    <ul class="toggle" id="api-toggle">
-                                        <label class="tg">◀</label>
-                                        <label class="toggle-label">API: </label>
-                                        <label class="selection" >Deezer</label>
-                                        <li class="drop-item">Deezer</li>
-                                        <li class="drop-item">Spotify</li>
-                                        <input type="text" value="Deezer" name="api-form" class="data">
-                                    </ul>
-
-                                    <ul class="toggle" id="type-toggle">
-                                        <label class="tg">◀</label>
-                                        <label class="toggle-label" style="margin-left: -4rem;">Type:</label>
-                                        <label class="selection">Artist</label>
-                                        <li class="drop-item">Artist</li>
-                                        <li class="drop-item">Album</li>
-                                        <li class="drop-item">Track</li>
-                                        <li class="drop-item">All</li>
-                                        <input type="text" value="Artist" name="type-form" class="data">
-                                    </ul>
-                                </div>   
-                            {% endif %}
-                        {% endif %}
-                    {% endif %}
-                </form>
+        <div class="index-container-1">
+            <div class="user-container">
+                <input type="button" class="user-button" value="{{user}}">
             </div>
-
-            <hr class="hr-big" style="margin-top: 4.5rem;">
-
-            <div class="request-container">
-                <label class="request-title">Previous Submissions</label>
-                <div class="requests">
-                    {% for request in requests %}
-                        <div class="request-card">
-                            <img src="{{request.img}}">
-                            {% if request.user == "bcheese15" %}
-                                <label style="display:block; margin-top:-9.5rem; margin-left:10.5rem;" >Requested by: </label><label class="request-user request-admin-tag">@{{ request.user }} </label>
-                            {% else %}
-                                <label style="display:inline-block;" >Requested by: </label><label class="request-user">@{{ request.user }}</label>
-                            {% endif %}
-                            <label class="request-date">Date: {{ request.date }}</label>
-                            <label class="request-type">Type: {{ request.type }}</label>
-                            {% if request._id|string in rip %}
-                                <label class="in-progress-label" >In progress...</label><label class="in-progress" >⬤</label>
-                            {% else %}
-                                <label class="complete-label" >Complete</label><label  class="complete">⬤</label>
-                            {% endif %}
-                            <input type="button" value="Retry" class="btn-2 dark retry" id="retry-button">
-                            <div class="content-wrapper">
-                                <label class="request-content">{{ request.content }}</label>
-                            </div>
-                        </div>
-                    {% endfor %}
-                </div>
-            </div>
+            <ul class="floating-navbar"><li id="home">Search</li><li>Add URL</li><li>Previous</li></ul>
         </div>
     </body>
-    <script type="text/javascript" src="/static/toggles.js"></script>
-    <script type="text/javascript" src="/static/index_searchbar.js"></script>
+    <script type="text/javascript" src="/static/index.js"></script>
 </html>
