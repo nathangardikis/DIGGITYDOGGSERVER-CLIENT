@@ -35,16 +35,13 @@ def index():
             return redirect(url_for("routes_bp.login"))
     elif request.method == "POST":
         query = request.form["query-form"]
-        api = request.form["api-form"]
         _type = request.form["type-form"]
-        if api == "Deezer":
-            if _type == "Artist":
-                return redirect(url_for("dz_results.deezer_artist_results", query=query))
-            elif _type == "Album":
-                return redirect(url_for("dz_results.deezer_album_results", query=query))
-        elif api == "Spotify":
-            if _type == "Artist":
-                return redirect(url_for("spotify_artist_results", query=query))
+        if _type == "Artist":
+            return redirect(url_for("dz_results.deezer_artist_results", query=query))
+        elif _type == "Album":
+            return redirect(url_for("dz_results.deezer_album_results", query=query))
+        elif _type == "URL":
+            pass
             
 
 @routes_bp.route("/url-request", methods=["POST", "GET"])

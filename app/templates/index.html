@@ -1,19 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-    <link rel="stylesheet" type="text/css" href="/static/styles.css">
-    <link rel="stylesheet" type="text/css" href="/static/ui.css">
     <link rel="stylesheet" type="text/css" href="/static/index.css">
     <head>
-        <title>DIGGITYDOGGSERVER</title>
+        <title>DDS-CLIENT</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body>
-        <div class="index-container-1">
-            <div class="user-container">
-                <input type="button" class="user-button" value="{{user}}">
-            </div>
-            <ul class="floating-navbar"><li id="home">Search</li><li>Add URL</li><li>Previous</li></ul>
+        <div class="nav-container">
+            <input type="button" class="user-button" value="{{user}}">
+            <input type="button" class="nav-button" value="Home" disabled>
+            <input type="button" class="nav-button" value="Submissions">
+            <input type="button" class="nav-button" value="Other">
         </div>
+
+        <div class="index-container-1" id="Home">
+            <label class="index-title-1"> New Music Submission</label>
+            <input type="text" class="searchbar" placeholder="Search artist here...">
+            <form method="post" autocomplete="off" id="search-form">
+                <input type="text" class="data-text" id="sb-text" name="query-form">
+                <input type="text" class="data-text" id="type-text" name="type-form" value="Artist">
+                <div class="index-options-container">
+                    <label class="index-options-container-title">
+                        Submission Options
+                    </label>
+                    <div class="options-multiple" id="type-options">
+                        <label>Submission type:</label>
+                        <input type="button" class="box-button" value="Artist" disabled><input type="button" class="box-button" value="Album"><input type="button" class="box-button" value="URL">
+                    </div>
+                    <div class="options-multiple" id="url-options" style="display: none;">
+                        <label>URL type:</label>
+                        <input type="button" class="box-button" value="YouTube" disabled><input type="button" class="box-button" value="Deezer"><input type="button" class="box-button" value="Spotify">
+                    </div>
+                </div>
+                <input type="button" class="search-button" value="Search" id="search-btn">
+            </form>
+        </div>
+
+        <div class="index-container-1" id="Submissions">
+            <label class="index-title-1">Previous Submissions</label>
+        </div>
+        
     </body>
     <script type="text/javascript" src="/static/index.js"></script>
 </html>
